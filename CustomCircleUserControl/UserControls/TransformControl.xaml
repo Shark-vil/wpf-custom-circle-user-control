@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="CustomCircleUserControl.UserControls.TransformControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:CustomCircleUserControl.UserControls"
+        mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="ResizePoint" TargetType="{x:Type Ellipse}">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="Stroke" Value="#FFC8C8C8" />
+            <Setter Property="Fill" Value="Red" />
+        </Style>
+        <ControlTemplate TargetType="Thumb" x:Key="ThumbResizeTemplate">
+            <Ellipse Style="{DynamicResource ResizePoint}"/>
+        </ControlTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Border BorderThickness="15">
+            <Border.BorderBrush>
+                <VisualBrush>
+                    <VisualBrush.Visual>
+                        <Rectangle StrokeDashArray="6 6" Stroke="Gray" StrokeThickness="1"
+                            Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=ActualWidth}"
+                            Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=ActualHeight}"/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Border.BorderBrush>
+
+            <Viewbox>
+                <StackPanel x:Name="ChildrenBlock" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Width="Auto" 
+                    Height="Auto"/>
+            </Viewbox>
+        </Border>
+
+        <Thumb x:Name="Pivot" Cursor="SizeAll" Opacity="0"/>
+
+        <Grid Opacity="1" Margin="-3">
+            <Grid.Resources>
+                <Style TargetType="{x:Type Ellipse}">
+                    <Setter Property="SnapsToDevicePixels" Value="true" />
+                    <Setter Property="Stroke" Value="#FFC8C8C8" />
+                    <Setter Property="Width" Value="10" />
+                    <Setter Property="Height" Value="10" />
+                    <Setter Property="Fill" Value="Silver" />
+                </Style>
+            </Grid.Resources>
+
+            <Thumb x:Name="LeftUpPivot" Template="{StaticResource ThumbResizeTemplate}" Cursor="SizeNWSE" Width="10" Height="10" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Thumb x:Name="RightUpPivot" Template="{StaticResource ThumbResizeTemplate}" Cursor="SizeNESW" Width="10" Height="10" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            <Thumb x:Name="LeftDownPivot" Template="{StaticResource ThumbResizeTemplate}" Cursor="SizeNESW" Width="10" Height="10" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <Thumb x:Name="RightDownPivot" Template="{StaticResource ThumbResizeTemplate}" Cursor="SizeNWSE" Width="10" Height="10" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        </Grid>
+    </Grid>
+</UserControl>
