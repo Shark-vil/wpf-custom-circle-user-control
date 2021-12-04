@@ -3,14 +3,5 @@ using System.Windows;
 
 namespace CustomCircleUserControl
 {
-    public partial class App : Application
-    {
-#if DEBUG
-        [DllImport("Kernel32")]
-        public static extern void AllocConsole();
-
-        [DllImport("Kernel32")]
-        public static extern void FreeConsole();
-#endif
-    }
+    public partial class App : Application { }
 }

@@ -227,12 +227,6 @@ namespace CustomCircleUserControl.UserControls
 
             Width = newWidth > _minSize ? newWidth : _minSize;
             Height = newHeight > _minSize ? newHeight : _minSize;
-#if DEBUG
-            Console.WriteLine($"Width: {currentWidth} > {newWidth}, Height: {currentHeight} > {newHeight}\n" +
-                $"HO: {_horizontalOffset}, VO: {_verticalOffset}\n" +
-                $"X: {_currentPosition.X}, Y: {_currentPosition.Y}\n" +
-                $"Left: {Left}, Top: {Top}");
-#endif
         }
     }
 }

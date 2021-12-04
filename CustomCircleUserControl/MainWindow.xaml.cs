@@ -13,10 +13,6 @@ namespace CustomCircleUserControl
         {
             InitializeComponent();
 
-#if DEBUG
-            App.AllocConsole();
-#endif
-
             Workingspace.MouseLeftButtonDown += Workingspace_MouseLeftButtonDown;
 
             TransformControl.a_StartedTransform += (TransformControl transform) =>
