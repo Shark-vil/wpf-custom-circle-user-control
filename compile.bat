@@ -1,1 +1,1 @@
-dotnet publish -r win-x64 -c Release --self-contained --output ".\.bin\"
+dotnet publish -r -c Release --runtime win-x64 --self-contained --output ".\.bin\"
